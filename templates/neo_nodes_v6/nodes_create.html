@@ -1,0 +1,48 @@
+{% extends "neo_nodes_v6/base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+
+<div class="container">
+    <div class="container">
+        <div class="jumbotron">
+            <form action="" id="node_label_form" method="GET">
+                 {% csrf_token %}
+                 {% bootstrap_form label_form %}            {# id="id_label" #}
+            </form>
+            <form action="" id="add_nodes" method="POST">
+             <div id="insert_form"></div>
+                 {# update the form #}
+                {% if form %}
+                    <div id="initial_form">
+                   {% csrf_token %}
+                   {% bootstrap_form form %}
+                    </div>
+                {% endif %}
+            </form>
+       </div>
+    </div>
+</div>
+    <script>
+    $(document).ready(function(){
+        $("#id_label").change(function () {
+          var url = '{% url 'neo_nodes_v6:insert_form' %}' ;  // get the url of the `insert_form` view
+          var label = $(this).val();  // get the selected label from the HTML input
+            console.log(url);
+             $("#initial_form").remove();
+            $("#dependent_form").remove();
+          $.ajax({                       // initialize an AJAX request
+            url: url,
+            data: {
+              'label': label
+            },
+            success: function (form) {
+                console.log(form);
+                $("#insert_form").html(form);
+              {#$(form).insertAfter("#insert_form").slideDown(300);#}
+            },
+            method: 'GET'
+          });
+        });
+    });
+    </script>
+{% endblock %}

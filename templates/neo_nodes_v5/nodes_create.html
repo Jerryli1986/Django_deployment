@@ -1,0 +1,59 @@
+{% extends "neo_nodes_v5/base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+
+<div class="container">
+        <div class="dropdown">
+
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 Label
+            </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a id='choice1' class="dropdown-item" href="#">RecordSet</a>
+                    <a id='choice2' class="dropdown-item" href="#">Region</a>
+                    <a id='choice3' class="dropdown-item" href="#">System</a>
+                </div>
+        </div>
+
+<br>
+<br>
+    <div class="container">
+        <div class="jumbotron">
+            <form method="POST">
+            <label for="recordset"><b>RecordSet:</b></label>
+                 {% csrf_token %}
+                 {% bootstrap_form form_recordset %}
+            {% buttons %}
+                <button type="submit" name="Record_create" class="btn btn-primary btn-large">Create</button>
+            {% endbuttons %}
+            </form>
+       </div>
+    </div>
+    <br>
+    <div class="container">
+        <div class="jumbotron">
+            <form method="POST">
+            <label for="system"><b>System:</b></label>
+                 {% csrf_token %}
+                 {% bootstrap_form form_region %}
+            {% buttons %}
+                <button type="submit" name="Region_create" class="btn btn-primary btn-large">Create</button>
+            {% endbuttons %}
+            </form>
+       </div>
+    </div>
+    <br>
+    <div class="container">
+        <div class="jumbotron">
+            <form method="POST">
+            <label for="Region"><b>Region:</b></label>
+                 {% csrf_token %}
+                 {% bootstrap_form form_system %}
+            {% buttons %}
+                <button type="submit" name="System_create" class="btn btn-primary btn-large">Create</button>
+            {% endbuttons %}
+            </form>
+       </div>
+    </div>
+</div>
+{% endblock %}

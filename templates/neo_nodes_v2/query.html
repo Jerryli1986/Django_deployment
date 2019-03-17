@@ -1,0 +1,15 @@
+{%extends 'neo_nodes_v2/base.html' %}
+{%block body_block%}
+
+    <form method="post">
+     {% csrf_token %}
+     {{ query_form.as_p }}
+     <input type="submit" value="Run Query" class="btn btn-outlined-success">
+    </form>>
+
+    <h3>Here is the result of query</h3>
+    {% for d in data %}
+         <li>{{ d }}</li>
+
+    {% endfor %}
+{% endblock %}

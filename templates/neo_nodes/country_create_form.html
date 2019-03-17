@@ -1,0 +1,15 @@
+{%extends 'neo_nodes/base.html' %}
+{%block body_block%}
+
+    <form method="post">
+     {% csrf_token %}
+     {{ country_form.as_p }}
+     <input type="submit" value="Create Country" class="btn btn-outlined-success">
+    </form>>
+    <h4>Here is the list of all Countries:</h4>
+    {% for d in data %}
+         <li>{{ d }}</li>
+
+    {% endfor %}
+
+{% endblock %}

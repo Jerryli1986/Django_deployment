@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="../../build/ogma.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/awesomplete@1.1.2/awesomplete.css" />
+  <script src="https://unpkg.com/awesomplete@1.1.2/awesomplete.js"></script>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <div id="graph-container"></div>
+    <div class="attribution">Paris Metro | Graph data © <a target="_blank" href="https://github.com/totetmatt/gexf/tree/master/metro/Paris">Matthieu Totet</a> CC-BY-SA
+  </div>
+  <form class="toolbar" id="ui">
+    <div class="section mode">
+      <div class="switch switch--horizontal">
+        <input id="graph" type="radio" name="mode-switch" value="graph" checked="checked"/>
+        <label for="graph">Graph</label>
+        <input id="geo" type="radio" name="mode-switch" value="geo"/>
+        <label for="geo">Geo</label>
+        <span class="toggle-outside">
+          <span class="toggle-inside"></span>
+        </span>
+      </div>
+    </div>
+    <div class="section shortest-path">
+      <h3>Shortest path</h3>
+
+      <p>
+        <label for="from-node-select">From</label>
+        <input name="from-node-select" id="from-node-select" class="clearable-input" placeholder="Select">
+      </p>
+      <p>
+        <label for="to-node-select">To</label>
+        <input name="to-node-select" id="to-node-select" class="clearable-input" placeholder="Select">
+      </p>
+    </div>
+    <div class="section layout">
+      <h3>Distance</h3>
+      <p>
+        <label for="central-node-select">Center</label>
+        <input name="central-node-select" id="central-node-select" class="clearable-input" placeholder="Select">
+      </p>
+    </div>
+  </form>
+  <form id="options" class="control-bar">
+    <div class="content">
+      <label><input type="range" id="push-ratio" value="1" min="0.1" max="2" step="0.1" /> Push factor</label>
+      <label><input type="checkbox" id="overlap" /> allow nodes overlap</label>
+      <label><input type="checkbox" id="randomize" /> randomize nodes</label>
+      <label><input type="checkbox" id="animate" /> animate</label>
+    </div>
+    <div class="controls">
+      <button id="reset">Reset</button>
+    </div>
+  </form>
+
+<script src="index.js"></script>
+</body>
+</html>

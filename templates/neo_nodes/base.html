@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Base</title>
+    {# Bootstrap and CSS (Probably would want downloaded files in your real projects)#}
+    {# https://bootswatch.com/#}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <nav  class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="{% url 'admin:index' %}">Admin</a>
+          <a class="nav-item nav-link" href="{% url 'neo_nodes:register' %}">Register</a>
+          <a class="nav-item nav-link" href="{% url 'neo_nodes:country' %}">Country</a>
+          <a class="nav-item nav-link" href="{% url 'neo_nodes:query' %}">Query</a>
+      </div>
+
+    </nav>
+    <div class="container">
+
+    </div>
+    {%block body_block%}
+    {%endblock%}
+  </body>
+</html>

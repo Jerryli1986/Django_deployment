@@ -1,0 +1,91 @@
+<div class="left side-menu" style="height: 100%; width: 270px; padding: 5px">
+                <div class="clearfix" style="height: 100%">
+                    <div class="sidebar-inner slimscrollleft" style="height: 100%">
+                        <!--- Divider -->
+
+                        <div id="sidebar-menu" style="padding:10px; padding-top:0px; height: 100%">
+                            <div class="row" style="height: 100%">
+								<div class="form-group" style="height: 100%">
+                                    <div style="height: 40%">
+
+                                        <!--<label class="control-label col-md-7 col-sm-7 col-xs-7">Search Criteria:</label>-->
+                                        <!--<div class="col-md-12 col-sm-12 col-xs-12 input-append">
+                                            <input type="text" id="GenericSearch" class="form-control" name="SC" placeholder="Search Criteria..." value=""><br><br>
+                                            <button type="submit" class="add-on"><i class="icon-search"></i></button>
+                                        </div>-->
+										<br>
+                                        <div class="col-md-12 col-sm-12 col-xs-12 input-group " style="height: 5%">
+                                            <input type="text" id="GenericSearch" class="form-control" placeholder="Search" name="SC" value="" style="height: 100%; border: 2px solid black">
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-default" onclick="SearchSimple(false)" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                            </div>
+                                        </div>
+										<br>
+                                        <div class="row" style="height: 10%; vertical-align: middle; ">
+                                            <label class="control-label col-md-4 col-sm-4 col-xs-4" style="color: black; height: 40%; margin-top: 4%;  ">Records:</label>
+
+                                            <submit class="btn col-md-1 col-sm-1 col-xs-1" value="MainSearch" style="color: grey; padding: 0px; padding-top: 4%; padding-right:5%; align-content: left;  max-width:100%;" onclick="ShowRec()" data-placement="top" data-toggle="tooltip" title="" id="eyeRec" data-original-title="Search"><span class="glyphicon glyphicon-eye-open" style="width:0%; color: white" id="eyeopenRec"></span><span class="glyphicon glyphicon-eye-close" style="width:100%" id="eyecloseRec"></span></submit>
+                                            <div class="col-md-7 col-sm-7 col-xs-7">
+                                                <div class="btn-group bootstrap-select show-tick" style="width: 125px;"><button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" data-id="DDRecord" title="(None)"><span class="filter-option pull-left">(None)</span>&nbsp;<span class="bs-caret"><span class="caret"></span></span></button><div class="dropdown-menu open"><div class="bs-actionsbox"><div class="btn-group btn-group-sm btn-block"><button type="button" class="actions-btn bs-select-all btn btn-default">Select All</button><button type="button" class="actions-btn bs-deselect-all btn btn-default">Deselect All</button></div></div><ul class="dropdown-menu inner" role="menu"></ul></div><select multiple="" data-actions-box="true" class="selectpicker show-tick" data-width="125px" title="(None)" id="DDRecord" onchange="AutoSearch(false)" tabindex="-98"></select></div><br>
+                                            </div>
+                                            <br><br>
+                                         </div>
+                                        <br>
+                                        <div class="row" style="height: 10%; vertical-align: middle; ">
+                                            <label class="control-label col-md-5 col-sm-5 col-xs-5" style="color: black; height: 40%; margin-top: 4%;  ">Business:</label>
+                                            <div class="col-md-7 col-sm-7 col-xs-7">
+                                                <div class="btn-group bootstrap-select show-tick" style="width: 125px;"><button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" data-id="DDBusiness" title="(None)"><span class="filter-option pull-left">(None)</span>&nbsp;<span class="bs-caret"><span class="caret"></span></span></button><div class="dropdown-menu open"><div class="bs-actionsbox"><div class="btn-group btn-group-sm btn-block"><button type="button" class="actions-btn bs-select-all btn btn-default">Select All</button><button type="button" class="actions-btn bs-deselect-all btn btn-default">Deselect All</button></div></div><ul class="dropdown-menu inner" role="menu"></ul></div><select multiple="" data-actions-box="true" class="selectpicker show-tick" data-width="125px" title="(None)" id="DDBusiness" onchange="AutoSearch(false)" style="background-color: green" tabindex="-98"></select></div><br>
+                                            </div>
+                                            <br><br>
+                                        </div>
+                                        <br>
+                                        <div class="row" style="height: 10%; vertical-align: middle; ">
+                                            <label class="control-label col-md-4 col-sm-4 col-xs-4" style="color: black; height: 40%; margin-top: 4%;  ">Region:</label>
+
+                                            <submit class="btn col-md-1 col-sm-1 col-xs-1" value="MainSearch" style="color: grey; padding: 0px; padding-top: 4%; padding-right:5%; align-content: left;  max-width:100%;" onclick="ShowReg()" data-placement="top" data-toggle="tooltip" title="" id="eyeReg" data-original-title="Search"><span class="glyphicon glyphicon-eye-open" style="width:0%; color: white" id="eyeopenReg"></span><span class="glyphicon glyphicon-eye-close" style="width:100%" id="eyecloseReg"></span></submit>
+                                            <div class="col-md-7 col-sm-7 col-xs-7">
+                                                <div class="btn-group bootstrap-select show-tick" style="width: 125px;"><button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" data-id="DDRegion" title="(None)"><span class="filter-option pull-left">(None)</span>&nbsp;<span class="bs-caret"><span class="caret"></span></span></button><div class="dropdown-menu open"><div class="bs-actionsbox"><div class="btn-group btn-group-sm btn-block"><button type="button" class="actions-btn bs-select-all btn btn-default">Select All</button><button type="button" class="actions-btn bs-deselect-all btn btn-default">Deselect All</button></div></div><ul class="dropdown-menu inner" role="menu"></ul></div><select multiple="" data-actions-box="true" class="selectpicker show-tick" data-width="125px" title="(None)" id="DDRegion" onchange="AutoSearch(false)" tabindex="-98"></select></div><br>
+                                            </div>
+                                            <br><br>
+                                         </div>
+                                        <br>
+                                        <!--div class="row" style="height: 10%; vertical-align: middle; ">
+                                            <label class="control-label col-md-5 col-sm-5 col-xs-5" style="color: black; height: 40%; margin-top: 4%; ">System:</label>
+                                            <div class="col-md-7 col-sm-7 col-xs-7">
+                                                <select multiple data-actions-box="true" class="selectpicker show-tick" data-width="125px" title="(None)" id="DDSystem" onChange="AutoSearch(false)" style="overflow: visible"></select><br>
+                                            </div>
+                                        </div-->
+
+
+
+                                            <label class="control-label col-md-7 col-sm-7 col-xs-7" style="">DATE RANGE:</label>
+                                            <div class="col-md-12 col-sm-12 col-xs-12" style="width: 100%">
+                                                <b id="minBar"></b> <div class="slider slider-horizontal" id=""><div class="slider-track"><div class="slider-track-low" style="left: 0px; width: 0%;"></div><div class="slider-selection" style="left: 0%; width: 0%;"></div><div class="slider-track-high" style="right: 0px; width: 100%;"></div></div><div class="tooltip tooltip-main top" role="presentation" style="left: 0%; margin-left: -101px;"><div class="tooltip-arrow"></div><div class="tooltip-inner"> Min: 01/01/1970, Max: 01/01/1970</div></div><div class="tooltip tooltip-min top" role="presentation" style="left: 0%; margin-left: -102.5px;"><div class="tooltip-arrow"></div><div class="tooltip-inner"> Min: Invalid date, Max: Invalid date</div></div><div class="tooltip tooltip-max bottom" role="presentation" style="left: 0%; margin-left: -102.5px; top: 18px;"><div class="tooltip-arrow"></div><div class="tooltip-inner"> Min: Invalid date, Max: Invalid date</div></div><div class="slider-handle min-slider-handle round" role="slider" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0" aria-valuetext=" Min: Invalid date, Max: Invalid date" tabindex="0" style="left: 0%;"></div><div class="slider-handle max-slider-handle round" role="slider" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0" aria-valuetext=" Min: Invalid date, Max: Invalid date" tabindex="0" style="left: 0%;"></div></div><input id="ex3" type="text" class="span2" value="0,0" data-slider-min="0" data-slider-max="0" data-slider-step="1" data-slider-value="[0,1]" data-value="0,0" style="display: none;"> <b id="maxBar"></b><br><br>
+                                            </div>
+                                        <br>
+                                            <div class="btn-group" role="group" aria-label="Basic example" style="height:10%">
+                                                <submit class="btn" id="Export2" style="width:85px; color: black" onclick="ExportCSV()" data-placement="top" data-toggle="tooltip" title="" data-original-title="Export To CSV File"><span class="glyphicon glyphicon-export"></span></submit>
+                                                <submit class="btn" value="Clear" style="width:85px; color: black" onclick="ClearRSearch()" data-placement="top" data-toggle="tooltip" title="" data-original-title="Clear Search Filters"><span class="glyphicon glyphicon-erase"></span></submit>
+                                                <submit class="btn" value="MainSearch" style="width:85px; color: black" onclick="SearchSimple(false)" data-placement="top" data-toggle="tooltip" title="" data-original-title="Search"><span class="glyphicon glyphicon-search"></span>
+
+                                            </submit></div>
+
+                                        </div>
+                                        <div class="noSelect" style="border:thin;">
+										    <h3 style="color: black; margin-top: 0px">Data Types</h3>
+                                            <div id="NodeLegend" style="color: black">
+										    </div>
+									    </div>
+                                        <div class="noSelect" style="bottom: 0%; border:thin; color: black" id="data">
+                                            <h3 style="color: black;">Metadata Details</h3>
+                                            <table style="font-size: 8pt;width: 100%" id="DataTable">
+
+                                            </table>
+                                        </div>
+                                </div>
+							</div>
+                        </div>
+
+                    </div>
+            </div>
+        </div>

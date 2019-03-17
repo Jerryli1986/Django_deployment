@@ -1,0 +1,37 @@
+{% extends "neo_nodes_v5/base.html" %}
+{% load staticfiles %}
+{% block content %}
+<div class="nodes-page">
+	<div class="container">
+
+		<div class="col-md-4">
+
+      <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Nodes
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+              <a class="dropdown-item" href="{% url 'nodes:nodes_create' %}">Add</a>
+              <a class="dropdown-item" href="#">Read</a>
+              <a class="dropdown-item" href="#">Update</a>
+              <a class="dropdown-item" href="#">Delete</a>
+            </div>
+
+            <button id="btnGroupDrop2" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Edges
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
+              <a class="dropdown-item" href="#">Add</a>
+              <a class="dropdown-item" href="#">Read</a>
+              <a class="dropdown-item" href="#">Update</a>
+              <a class="dropdown-item" href="#">Delete</a>
+            </div>
+
+      </div>
+</div>
+		{% block pre_nodes %}{% endblock %}
+		{% block nodes_content %}{% endblock %}
+		{% block post_nodes %}{% endblock %}
+	</div>
+</div>
+{% endblock %}

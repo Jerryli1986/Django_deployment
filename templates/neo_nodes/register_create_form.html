@@ -1,0 +1,15 @@
+{%extends 'neo_nodes/base.html' %}
+{%block body_block%}
+
+    <form method="post">
+     {% csrf_token %}
+     {{ register_form.as_p }}
+     <input type="submit" value="Register" class="btn btn-outlined-success">
+    </form>>
+
+    <h4>Here is the list of all Register:</h4>
+    {% for d in data_register %}
+         <li>{{ d }}</li>
+
+    {% endfor %}
+{% endblock %}

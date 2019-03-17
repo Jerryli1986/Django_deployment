@@ -1,0 +1,48 @@
+{%extends 'neo_nodes_v2/base.html' %}
+{% load static %}
+  <script type="text/javascript" src="{%  static "neo_nodes_v2/create.js" %}"></script>
+{%block body_block%}
+<form method="POST">
+    {%  csrf_token %}
+
+   <div class="col-lg-10 form-group">
+      {{ form_id}}
+   </div>
+   <div class="col-sm-10 form-group">
+      {{ form_label}}
+   </div>
+
+    <table class="table form-table table-bordered table-sm">
+        <thead class="text-center">
+            <tr>
+                <th>Properties Name:</th>
+                <th>Properties Value:</th>
+                <th><button type="button" class="btn btn-sm btn-success add-form-row" id="addOne">+</button></th>
+            </tr>
+        </thead>
+        <tbody id="t1">
+           {%  for form_data in formset %}
+            <tr></tr>
+           {%  endfor %}
+        </tbody>
+    </table>
+   {{ formset.management_form }}
+    <input type="submit" value="Search">
+
+</form>
+<div class="container">
+        <h4>Here is the result searched:</h4>
+            <form >
+            {% for r in result %}
+                <input type="checkbox" name="" value="">{{ r }} <br>
+            {% endfor %}
+            </form>
+
+            <input type="submit"  value="Delete">
+</div>
+{#    <script>#}
+{#    $('.datalist').on("click","li",function(){#}
+{##}
+{#    })#}
+{#    </script>#}
+{% endblock %}

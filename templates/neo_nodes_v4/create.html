@@ -1,0 +1,44 @@
+
+{%extends 'neo_nodes_v4/base.html' %}
+{% load static %}
+  <script type="text/javascript" src="{%  static "neo_nodes_v4/create.js" %}"></script>
+{%block body_block%}
+<form method="POST">
+    {%  csrf_token %}
+
+   <div class="col-lg-10 form-group">
+      {{ form_id}}
+   </div>
+   <div class="col-sm-10 form-group">
+      {{ form_label}}
+   </div>
+
+    <table class="table form-table table-bordered table-sm">
+        <thead class="text-center">
+            <tr>
+                <th>Properties Name:</th>
+                <th>Properties Value:</th>
+                <th><button type="button" class="btn btn-sm btn-success add-form-row" id="addOne">+</button></th>
+            </tr>
+        </thead>
+        <tbody id="t1">
+           {%  for form_data in formset %}
+               <tr class="item">
+                  <td>
+                      {{ form_data.attr_name }}
+                  </td>
+                   <td>
+                       {{ form_data.attr_value }}
+                   </td>
+                   <td>
+                       <button type="button" class="btn btn-danger btn-sm remove-form-row" id="{{ form_data.prefix }}">-</button>
+                   </td>
+               </tr>
+           {%  endfor %}
+        </tbody>
+    </table>
+   {{ formset.management_form }}
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock %}
