@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="16c42992-e16b-43cc-93cb-d69e957bfa2a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="16c42992-e16b-43cc-93cb-d69e957bfa2a" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,11 +128,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="843" />
-    <option name="y" value="69" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-80" />
+    <option name="y" value="84" />
     <option name="width" value="1946" />
-    <option name="height" value="887" />
+    <option name="height" value="888" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -291,12 +289,20 @@
       <workItem from="1552478032205" duration="7254000" />
       <workItem from="1552650941437" duration="1668000" />
       <workItem from="1552657609316" duration="963000" />
-      <workItem from="1552838568939" duration="4130000" />
+      <workItem from="1552838568939" duration="4674000" />
     </task>
+    <task id="LOCAL-00001" summary="create a branch">
+      <created>1552903875155</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1552903875156</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="360277000" />
+    <option name="totallyTimeSpent" value="360821000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -362,6 +368,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="create a branch" />
+    <option name="LAST_COMMIT_MESSAGE" value="create a branch" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/templates/neo_nodes_v2/read.html">
