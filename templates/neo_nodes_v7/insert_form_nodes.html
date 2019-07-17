@@ -1,0 +1,7 @@
+
+{% load bootstrap4 %}
+<div id="dependent_form" >
+      {% csrf_token %}
+      {% bootstrap_form form %}
+    <button type="submit" name="create_button" class="btn btn-primary btn-large" value="{{ label }}">Create</button>
+</div>

@@ -1,0 +1,131 @@
+{% extends "neo_nodes_v6/base.html" %}
+{% load staticfiles %}
+{% load bootstrap4 %}
+{% block content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+
+    <div class="container">
+    <form method="GET" action="">
+       {% csrf_token %}
+
+       <div class="jumbotron">
+               <h2>Choose Relationship</h2>
+            <label for="recordset">System->RecordSet:</label>
+                  <select action="" id="choose7" name="choose7" method="POST">
+                    <option val="initial">  </option>
+                     <option val="contains"> Contains </option>
+                     <option val="contains"> SRTest </option>
+                 </select>
+               <br>
+               <br>
+               <label for="system">System->System:</label>
+              <select action="" id="choose8" name="choose8" method="POST">
+                <option val="initial">  </option>
+                <option val="Trades">Trades  </option>
+                  <option val="Settlements"> Settlements </option>
+                  <option val="CustomerDetails">CustomerDetails  </option>
+                  <option val="Orders"> Orders </option>
+                  <option val="Orders"> SSTest </option>
+
+            </select>
+               <br>
+               <br>
+                <label for="Region">System->Region:</label>
+               <select action="" id="choose9" name="choose9" method="POST">
+                <option val="initial">  </option>
+                <option val="UsedIn">UseIn  </option>
+                <option val="UsedIn">TestIn  </option>
+               </select>
+            <br>
+            <input class="input-lg" type="checkbox" name="one_bidirection">One or Bidirection (Default is one direction)
+            <br>
+            <label for="rel_properties">Rel Properties:</label>
+            <input type="text" name="rel_properties">
+
+           </div>
+
+       <div class="jumbotron">
+           <h2>Choose Node1</h2>
+           <br>
+           <label for="recordset">RecordSet</label>
+          <select action="" id="choose1" name="choose1"  method="POST">
+            <option val="initial">  </option>
+            {% for item in recordset %}
+                <option val="{{ item }}"> {{ item }} </option>
+            {% endfor %}
+        </select>
+           <br>
+           <br>
+           <label for="system">System</label>
+          <select action="" id="choose2" name="choose2" method="POST">
+            <option val="initial">  </option>
+            {% for item in system %}
+			<option val="{{ item }}"> {{ item }} </option>
+		     {% endfor %}
+        </select>
+           <br>
+           <br>
+            <label for="Region">Region</label>
+           <select action="" id="choose3" name="choose3" method="POST">
+            <option val="initial">  </option>
+            {% for item in region %}
+			<option val="{{ item }}"> {{ item }} </option>
+		     {% endfor %}
+        </select>
+       </div>
+
+       <div class="jumbotron">
+               <h2>Choose Node2</h2>
+            <br>
+                  <label for="recordset">RecordSet</label>
+              <select action="" id="choose4" name="choose4"  method="POST">
+                <option val="initial">  </option>
+                {% for item in recordset %}
+                <option val="{{ item }}"> {{ item}} </option>
+                 {% endfor %}
+            </select>
+               <br>
+               <br>
+               <label for="system">System</label>
+              <select action="" id="choose5" name="choose5" method="POST">
+                <option val="initial">  </option>
+                {% for item in system %}
+                <option val="{{ item }}"> {{ item }} </option>
+                 {% endfor %}
+            </select>
+               <br>
+               <br>
+                <label for="Region">Region</label>
+               <select action="" id="choose6" name="choose6" method="POST">
+                <option val="initial">  </option>
+                {% for item in region %}
+                <option val="{{ item }}"> {{ item }} </option>
+                 {% endfor %}
+            </select>
+           </div>
+
+
+       <button  class="btn btn-lg btn-success" name="create">Create</button>
+       <button  class="btn btn-lg btn-primary" disabled="disabled" name="search">Search</button>
+       <button  class="btn btn-lg btn-warning" disabled="disabled" name="update">Update</button>
+       <button  class="btn btn-lg btn-danger" name="delete">Delete</button>
+     </form>
+        <br>
+        <br>
+        <h4>Here is the list of five records:</h4>
+             {% for d in result %}
+                 <li>{{ d }}</li>
+             {% endfor %}
+             <br>
+             {% if extra %}
+               {% for d in result1 %}
+                 <li>{{ d }}</li>
+               {% endfor %}
+             {% endif %}
+    </div>
+
+{% endblock %}
+
+

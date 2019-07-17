@@ -1,10 +1,192 @@
-from py2neo import Graph
+from py2neo import Graph,Schema
+import json
 import ast
 import pandas
 from py2neo import Node, Relationship,Subgraph,NodeMatcher
 from py2neo.ogm import GraphObject,Property
 #from scripts.vis import draw
-graph=Graph("bolt://127.0.0.1:7687",auth=("neo4j","password"))
+graph=Graph("bolt://127.0.0.1:7687",auth=("neo4j","neo4j2"))
+
+#######################################################################
+query='Match ()-[rr]->() where id(rr) = {} RETURN TYPE(rr)'.format(56)
+result=graph.run(query).to_series().to_dict()[0].strip().lower()
+print(result)
+
+
+
+
+
+
+
+#########################return n1,m1,r1,n,m,r####################################
+# query = " MATCH (n:System)-[r]->(m:System) optional Match (n1:System)-[r1]->(m1:RecordSet)  return n,m,r,n1,m1,r1 limit 1"
+# # query = "MATCH (n:System)-[r]->(m:System) where id(n)=18 and id(m)=64 RETURN n ,m,r"
+# result=graph.run(query).data()   # type(result) is list
+# # print(result[0]['r1'].start_node.identity)
+
+# Relationship
+#
+# def loop_dict_in_list(lists,item):
+#     result=[]
+#     for l in lists:
+#         result.append(l[item])
+#     return result
+# def uniquedata(data,item,newinfo):
+#     if len(data) :
+#         if newinfo[item] not in (loop_dict_in_list(data,item)) :
+#              data.append(newinfo)
+#     else:
+#         data.append(newinfo)
+#     return data
+#
+# def neo4jdata(data):
+#     nodes = []
+#     edges = []
+#     if data :
+#         for i in data :
+#
+#             for j in i.keys():
+#                 if ('n') in j :
+#                    node_info={'id':i[j].identity,
+#                           'labels': list(i[j]._labels),
+#                           'properties': dict(i[j])}
+#                    nodes=uniquedata(nodes,'id',node_info)
+#
+#                 elif ('m') in j :
+#                     node_info = {'id': i[j].identity,
+#                                  'labels': list(i[j]._labels),
+#                                  'properties': dict(i[j])}
+#                     nodes = uniquedata(nodes, 'id', node_info)
+#                 elif ('r') in j :
+#                     rel_name, = i[j].types()
+#                     edge_info={'id':i[j].identity,
+#                        'type': rel_name,
+#                         'startNode':i[j].start_node.identity,
+#                         'endNode':i[j].end_node.identity,
+#                         'properties': dict(i['r'])}
+#                     edges=uniquedata(edges, 'id', edge_info)
+#                 else :
+#                     raise ValueError
+#
+#     graph={'nodes':nodes,'relationships':edges}
+#     result={"results": [{"columns": ["user", "entity"],
+#                          "data": [{ "graph": graph}]}],
+#             "errors": []}
+#     return result
+#
+# print(neo4jdata(result))
+
+
+
+
+
+
+
+
+
+#######intitial muiltiple choice in form#########################
+# query = " MATCH (n)-[r]->(m) where id(n)={} return n,m,r  ".format(101)
+# result=graph.run(query).data()       # type(result) is list
+
+# print(result)
+# print({'id': result[0]['n'].identity})
+# print({'labels': result[0]['n'].labels})
+# print({'properties': dict(result[0]['n'])})
+
+
+
+
+
+# format from py2neo data to neo4j.js data format
+# def loop_dict_in_list(lists,item):
+#     result=[]
+#     for l in lists:
+#         result.append(l[item])
+#     return result
+# def uniquedata(data,item,newinfo):
+#     if len(data) :
+#         if newinfo[item] not in (loop_dict_in_list(data,item)) :
+#              data.append(newinfo)
+#     else:
+#         data.append(newinfo)
+#     return data
+#
+# def neo4jdata(data):
+#     nodes = []
+#     edges = []
+#     if data :
+#         for i in data :
+#             for j in ['n','m']:
+#                # if len(nodes) and  i[j].identity in
+#                node_info={'id':i[j].identity,
+#                           'labels': list(i[j]._labels),
+#                           'properties': dict(i[j])}
+#                nodes=uniquedata(nodes,'id',node_info)
+#             rel_name, = i['r'].types()
+#             edge_info={'id':i['r'].identity,
+#                        'type': rel_name,
+#                         'startNode':nodes[0]['id'],
+#                         'endNode':nodes[1]['id'],
+#                         'properties': dict(i['r'])}
+#             edges=uniquedata(edges, 'id', edge_info)
+#
+#     graph={'nodes':nodes,'relationships':edges}
+#     result={"results": [{"columns": ["user", "entity"],
+#                          "data": [{ "graph": graph}]}],
+#             "errors": []}
+#     return result
+#
+# print(json.dumps(neo4jdata(result)))
+
+# {'results': [
+#     {'columns': ['user', 'entity'],
+#      'data': [
+#          {'graph':
+#               {'nodes': [
+#                   {'id': 101, 'labels': ['Movie'], 'properties': {'title': 'The Matrix', 'tagline': 'Welcome to the Real World', 'released': 1999}},
+#                   {'id': 61, 'labels': ['Region'], 'properties': {'name': 'EMEA', 'id': 'R1'}}],
+#               'relationships': [
+#                   {'id': 383, 'type': 'Live_in', 'startNode': 101, 'endNode': 61, 'properties': {'city': 'Birmingham'}},
+#                   {'id': 363, 'type': 'test', 'startNode': 101, 'endNode': 61, 'properties': {}}
+#               ]
+#               }
+#          }
+#      ]
+#      }
+# ],
+# "errors": []
+# }
+
+
+#####update node#######
+# query=" MATCH (n) where id(n)={} return n ".format(121)
+# node1=graph.run(query).to_series().to_dict()
+# print(node1)
+# properties="{born: 1900, name: 'Helen Hunt'}"
+# query_1='Merge (n:Person '+properties+') where id(n)=121'
+# print(query_1)
+# node2=graph.run(query_1)
+
+
+###############update node###############################
+# query1=" MATCH (n) where id(n)={} return n ".format(121)
+# node1=graph.run(query1).to_series().to_dict()
+# print(node1)
+# properties= {'born': 190000, 'name': 'Helen Hunt'}
+# query='MATCH (n) WHERE id(n) = {} SET n =' .format(121) +'{'
+# if isinstance(properties, dict):
+#     # create cypher query
+#     for k, v in properties.items():
+#         if isinstance(v, str):
+#             v = "'" + v + "'"
+#         query += ('{}:{},').format(k, v)
+#     query = query[:-1] + '}'
+# print(query)
+# node2=graph.run(query)
+# print(graph.run(query1).to_series().to_dict())
+
+
+
 #graph = Graph("http://neo4j:password@localhost:7474")
 #graph.delete_all()
 
@@ -581,11 +763,11 @@ import hashlib
 
 
 ############
-import os
-fpath=r'C:\Users\jerryzli\Desktop\AFT-000018.cfg'
-dir_=os.scandir(r'C:\Users\jerryzli\Desktop')
-for d in dir_:
-    print (d)
+# import os
+# fpath=r'C:\Users\jerryzli\Desktop\AFT-000018.cfg'
+# dir_=os.scandir(r'C:\Users\jerryzli\Desktop')
+# for d in dir_:
+#     print (d)
 ##result##########
 # <DirEntry 'AFT-000018.cfg'>
 # <DirEntry 'Atom.lnk'>
@@ -594,4 +776,115 @@ for d in dir_:
 # <DirEntry 'DUST_stuff'>
 # <DirEntry 'personal'>
 # <DirEntry 'Python_Django_Udemy_Training'>
-###############
+# ###############
+# print (max(1,2,5))
+
+
+# aaa=str(graph.run('MATCH (n) RETURN distinct labels(n)').to_series().tolist()).replace('[',"").replace(']',"")
+
+# aaa=graph.run('MATCH (n) RETURN distinct labels(n)').to_series().to_json()
+# aaa=graph.run('MATCH (n) RETURN n').to_series().to_dict()
+from py2neo import ogm
+# aaa=GraphObject.wrap(graph.run('MATCH (n) RETURN n limit 1')).__primarykey__
+# print(aaa)
+#
+#
+# aaa=graph.run('MATCH (n) RETURN id(n),n').to_series().to_json()
+# print(aaa)
+############################################################
+# id_query=('MATCH (n:{}) return id(n)').format("Movie")
+# id_list=graph.run(id_query).to_series().to_dict()
+# for key, value in id_list.items() :
+#     node_query='MATCH (n:{}) where id(n)={} return n'.format("Movie",value)
+#     node=graph.run(node_query).to_series().item()
+#     print(node.identity)
+
+# ####################################
+
+# query=('MATCH (n:{}) return n ').format("Movie")
+# node_list=graph.run(query).to_series().to_dict()
+# out_put={}
+# for i, v in node_list.items():
+#     print (v.identity)
+#     out_put.update({v.identity:v})
+# print(out_put)
+#################################################
+# query=('MATCH (n:{}) where id(n)=1 return n ').format("Movie")
+# node_list=graph.run(query).to_series().to_dict()
+#
+# print(len(node_list))
+# if len(node_list) :
+#     print('ok')
+# else :
+#     raise ValueError
+
+##################################################
+# query=('MATCH (n)-[r]->(m) where id(n)={} return [id(r),id(n), r,id(m)] ').format(14)
+# node_list=graph.run(query).to_series().to_dict()
+# print(node_list)
+# print(len(node_list))
+# if len(node_list) :
+#     print('ok')
+# else :
+#     raise ValueError
+################################################
+
+# query=('MATCH (n)-[r:{}]->(m) where id(n)={} and id(m)={} and id(r)={} return [n,r,m] ').format("ACTED_IN",116,101,66)
+
+# query='MATCH p=()-[r:ACTED_IN]->() where id(r)=113 RETURN r LIMIT 1'
+# node_list=graph.run(query).to_series().to_dict()
+# # a=node_list
+# b=node_list
+# print(a[0][0].identity)
+# frozenset_1=a[0][1].types()
+# print((a[0][1].types()))
+# value,=frozenset_1
+# print( value)
+######
+# a[0][1].update({"roles": ['Agent Smith1']})
+# print(a[0][1])
+# print("b",b[0][1])
+# b[0][1].update(a[0][1].items())
+# print("b update",b[0][1])
+######
+
+
+#
+# print(b[0][1].popitem())
+# print(b[0][1].__dict__)
+# frozenset
+#### This is wrong , because quote with roles
+# query="Match ()-[r]->() where id(r)=113  set r={'roles': ['CCC', 'BBB']}"
+# graph.run(query)
+
+#### this is right
+# query="Match ()-[r]->() where id(r)=113  set r={roles: ['CCC', 'BBB']}"
+# graph.run(query)
+# query='match ()-[r]->() where id(r)=113 set r={roles:["abc","bcd"],salary:1000,work:"hard"}'
+# query_2='MATCH p=()-[r:ACTED_IN]->() where id(r)=113 RETURN p LIMIT 1'
+
+# query="Match ()-[r]->() where id(r)=113 return r"
+# data=graph.run(query)
+
+###############################
+# x={"a":1,"b":2}
+#
+# y={"c":3}
+#
+# x.update(y)
+# print(x)
+
+
+###########################################################
+# query='MATCH p=()-[r:ACTED_IN]->() where id(r)=113 RETURN r LIMIT 1'
+# node_list=graph.run(query).to_series().to_dict()
+#
+# b=node_list
+# p={}
+# print(b[0].items())
+# for k,v in b[0].items():
+#     print(k,v)
+#     p.update({k:v})
+# q=json.dumps(p)
+# print(type(json.loads(q)))
+#####################################################

@@ -35,7 +35,7 @@ class RecordSet(models.Model):
     businessContactName  = models.CharField(max_length=266,blank=True)
     extractionSLA        = models.CharField(max_length=266,blank=True)
 
-    def datatoEpoch(self,inputdate):
+    def datetoEpoch(self,inputdate):
         pattern = '%Y-%m-%d'
         epoch = int(time.mktime(time.strptime(inputdate, pattern)))
         return epoch

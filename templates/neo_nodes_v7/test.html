@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% load staticfiles %}
+
+
+<div class="topbar">
+             <!--LOGO -->
+            <!--<div class="topbar-left" style="height:100%; width:90% ;overflow: visible">-->
+                <!--<div style="height:100%">-->
+                    <!--<div class="col-md-5 col-sm-5 col-xs-5 "style="max-height:20px;width:150px; height: 5%">-->
+                        <!--<a href="/" class="logo" style="height: 3%">-->
+                            <!--<img src="{% static 'smart_asset/assets/images/brand/ddot.png'%}" class="icon-c-logo" style="max-height:20px;" height="5%">-->
+                            <!--<span><img src="{% static 'smart_asset/assets/images/brand/logo.png'%}"></span>-->
+                        <!--</a>-->
+                    <!--</div>-->
+                    <!--<div class="col-md-6 col-sm-6 col-xs-6" style="max-height:55px; padding-top: 10px; padding-left: 0px">-->
+                        <!--<h3 style="color: #85BC22; height: 5%; margin-bottom: 0px; margin-left: 0px; font-size: 25pt" >SystemsMap</h3>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+             <!--Button mobile view to collapse sidebar menu-->
+    <div class="collapse navbar-collapse" id="myNavbar">
+        <div class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                    <div class="navbar-header">
+                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                          </button>
+                        <div style="display: inline-block" id="branding">
+                            <a href="/" class="navbar-left nav">
+                                <img src="{% static 'assets/images/brand/logo_white.png'%}" class="icon-c-logo" width="148">
+                                <h4 id ="title">Systems Map</h4>
+                            </a>
+                        </div>
+
+                        <!--<a class="navbar-brand" href="/" id="title">SystemsMap</a>-->
+                    </div>
+                    <ul class="nav navbar-nav navbar-right" id="topbar-buttons">
+                        {% if user.is_authenticated %}
+                            <li><a id="Back" onclick="GetPreviousCommand()"><span class="glyphicon glyphicon-chevron-left waves-effect" ></span></a></li>
+                            <li><a id="Next" onclick="GetNextCommand()"><span class="glyphicon glyphicon-chevron-right waves-effect" ></span></a></li>
+                            <li>
+                                <a class="nav-item nav-link waves-effect" href="#" class="btn btn-simple">
+                                    <i class="ti-home"></i>
+                                    <span> Home</span>
+                                </a>
+                            </li>
+                            <li><a class="nav-item nav-link waves-effect" href="#"  data-toggle="modal" data-target="#node_form">
+                                <span>Nodes</span>
+                            </a></li>
+                            <li><a class="nav-item nav-link waves-effect" href="#" class="btn btn-simple"><span>Edges</span></a></li>
+                            <li><a class="nav-item nav-link waves-effect" href="#" class="btn btn-simple">
+                                <i class="ti-search"></i>
+                                <span> Search</span>
+                            </a></li>
+                            <li><a class="nav-item nav-link waves-effect" href="{%url 'home:logout'%}" class="btn btn-simple">
+                                <i class="ti-user"></i>
+                                <span> Log out</span>
+                            </a></li>
+                        {% else %}
+                            <li><a class="nav-item nav-link" href="{%url 'home:login'%}" class="btn btn-simple">
+                                <i class="ti-user"></i>
+                                <span>Log in</span>
+                            </a></li>
+                        {% endif %}
+
+
+                    </ul>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="node_form" class="modal fade" >
+
+        <div class="modal-dialog">
+        <div class=" modal-content">
+            <div class="modal-header">
+                <p class="modal-title">Update Node Form</p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <!--Insert Form-->
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>

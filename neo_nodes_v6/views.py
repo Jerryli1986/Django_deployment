@@ -18,12 +18,15 @@ def add_nodes(request):
     label_form=None
     form=None
     label_form = LabelForm(request.GET or None)     # because on create_nods.html has {%bootstrap label_form%} so no matter post or get, we have to render label_form
+    print(request.POST)
     if request.method=='POST':
         label=request.POST.get('create_button')     # a trick to save label data to button.value
         if label=='RecordSet' :
             form= RecordSetForm(request.POST or None)
         elif label=='Region' :
+
             form = RegionForm(request.POST or None)
+            print(form)
         elif label=='System' :
             form = SystemForm(request.POST or None)
 
@@ -52,6 +55,7 @@ def insert_form(request):
             form = SystemForm()
     context = {'form': form,
                'label':label}
+    # return HttpResponse(form.as_p())
     return render(request, 'neo_nodes_v6/insert_form_nodes.html', context)
 
 
