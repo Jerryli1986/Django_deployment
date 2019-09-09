@@ -61,7 +61,7 @@ cmds = ['python', _ingest_script, fpath]
 # print(cmds)
 cmds=subprocess.list2cmdline(cmds)
 # print(cmds)
-output_dir=os.path.join(_this_dir,'output.txt')
+output_dir=os.path.join(_this_dir, 'output.txt')
 # with open(output_dir, "wb") as f:
 #     p= subprocess.Popen(cmds, shell=True, stderr=subprocess.PIPE,stdout=f)
 

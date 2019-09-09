@@ -20,6 +20,10 @@ def download_file1(url, dest=None):
     return filename
 
 def download_file(url, dest=None):
+
+    # req = urllib2.Request(url)
+    # req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0')
+
     u = urllib2.urlopen(url)
 
     scheme, netloc, path, query, fragment = urlparse.urlsplit(url)
@@ -77,7 +81,8 @@ def get_last_log(log_file):
 def main(url_dir, destination_dir, log_dir, name):
     log_file = os.path.join(log_dir, "download_log.txt")
     last_download = get_last_log(log_file)
-    curr_iteration = int(last_download.replace(".zip", "")) + 1
+    # curr_iteration = int(last_download.replace(".zip", "")) + 1
+    curr_iteration = int(last_download.replace(".zip","").split('\\')[-1]) + 1
     # Run over all zips
     if name == "Dave":
         start_zip = 0
@@ -101,16 +106,18 @@ def main(url_dir, destination_dir, log_dir, name):
             print('Downloading file ' + outfilepath)
             filename = download_file(url_dir + filename, destination_dir)
             #filename = "{:0>3}".format(i) + ".zip"
-            #print(filename)
+            print(filename)
             write_to_log(log_file, filename)
     return filename
 
 if __name__ == "__main__":  # Only run if this file is called directly
     #print("Testing with 10MB download")
     url = r"http://downloads.digitalcorpora.org/corpora/files/govdocs1/zipfiles/"
-    dest_dir = "P:/NON-CLIENT/DUST/Fileshare Dataset/GovDocs1/RAW/"
+    # dest_dir = "P:/NON-CLIENT/DUST/Fileshare Dataset/GovDocs1/RAW/"
+    dest_dir = r"C:\Users\jerryzli\Downloads\RAW"
     name = "Jerry" #Fill in name HERE
-    log_dir = "P:/NON-CLIENT/DUST/Fileshare Dataset/GovDocs1/" + name
+    # log_dir = "P:/NON-CLIENT/DUST/Fileshare Dataset/GovDocs1/" + name
+    log_dir = r"C:\Users\jerryzli\Downloads" + '\\'+ name
     #filename = download_file(url, "C:/Users/daeldridge/Documents/DUST/FileDownloads")
     #print(filename)
     filename = main(url, dest_dir, log_dir, name)
